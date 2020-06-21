@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    build: .
+    image: cagataygurturk/docker-ssh-tunnel:0.0.1
+    volumes:
+      - $HOME/.ssh:/root/ssh:ro
+    environment:
+      # ssh machine
+      TUNNEL_HOST: mysql-tunnel
+      TUNNEL_PORT: 22
+      # connect to machine behind ssh
+      REMOTE_HOST: tunneled-sql.corporate.internal.tld
+      REMOTE_PORT: 3306
+      # port in the docker container
+      LOCAL_PORT: 3306

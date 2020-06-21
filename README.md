@@ -1,5 +1,3 @@
-[![](https://images.microbadger.com/badges/image/cagataygurturk/docker-ssh-tunnel.svg)](https://microbadger.com/images/cagataygurturk/docker-ssh-tunnel)
-
 # Docker SSH Tunnel
 
 This Docker creates a simple SSH tunnel over a server. It is very useful when your container needs to access to an external protected resource. In this case this container might behave like a proxy to outer space inside your Docker network.
@@ -27,9 +25,10 @@ This Docker creates a simple SSH tunnel over a server. It is very useful when yo
 4. Now in `docker-compose.yml` you can define the tunnel as follows:
 
 ```
-    version: '2'
+    version: '3'
     services:
       mysql:
+        build: .
         image: cagataygurturk/docker-ssh-tunnel:0.0.1
         volumes:
             - $HOME/.ssh:/root/ssh:ro
