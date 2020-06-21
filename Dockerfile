@@ -1,5 +1,5 @@
-FROM alpine:3.2
-MAINTAINER Cagatay Gurturk <cguertuerk@ebay.de>
+FROM alpine:latest
+MAINTAINER Wieser Martin <martin.wieser@pseekoo.com>
 
 RUN apk add --update openssh-client && rm -rf /var/cache/apk/*
 
@@ -8,6 +8,7 @@ ssh \
 -vv \
 -o StrictHostKeyChecking=no \
 -N $TUNNEL_HOST \
+-p $TUNNEL_PORT \
 -L *:$LOCAL_PORT:$REMOTE_HOST:$REMOTE_PORT \
 && while true; do sleep 30; done;
 EXPOSE 1-65535
